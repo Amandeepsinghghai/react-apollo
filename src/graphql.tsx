@@ -542,8 +542,8 @@ export default function graphql<
         } else {
           // fetch the current result (if any) from the store
           const currentResult = this.queryObservable.currentResult();
-          const { loading, error, networkStatus } = currentResult;
-          assign(data, { loading, networkStatus });
+          const { loading, error, networkStatus, partial } = currentResult;
+          assign(data, { loading, networkStatus, partial });
 
           // Define the error property on the data object. If the user does
           // not get the error object from `data` within 10 milliseconds
