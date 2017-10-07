@@ -15,19 +15,24 @@
     "test-watch": "jest --watch",
     "posttest": "npm run lint && npm run type-check",
     "filesize": "npm run compile:browser && bundlesize",
-    "type-check": "tsc ./test/typescript.ts --noEmit --jsx react --noEmitOnError --lib es6,dom --experimentalDecorators && flow check",
+    "type-check":
+      "tsc ./test/typescript.ts --noEmit --jsx react --noEmitOnError --lib es6,dom --experimentalDecorators && flow check",
     "compile": "tsc",
-    "bundle": "rollup -c && rollup -c rollup.browser.config.js && rollup -c rollup.test-utils.config.js",
-    "compile:browser": "rm -rf ./dist && mkdir ./dist && browserify ./lib/react-apollo.browser.umd.js --i graphql-tag --i react --i apollo-client -o=./dist/index.js && npm run minify:browser && npm run compress:browser",
-    "minify:browser": "uglifyjs -c -m -o ./dist/index.min.js -- ./dist/index.js",
+    "bundle":
+      "rollup -c && rollup -c rollup.browser.config.js && rollup -c rollup.test-utils.config.js",
+    "compile:browser":
+      "rm -rf ./dist && mkdir ./dist && browserify ./lib/react-apollo.browser.umd.js --i graphql-tag --i react --i apollo-client -o=./dist/index.js && npm run minify:browser && npm run compress:browser",
+    "minify:browser":
+      "uglifyjs -c -m -o ./dist/index.min.js -- ./dist/index.js",
     "compress:browser": "./scripts/gzip.js --file=./dist/index.min.js",
     "watch": "tsc -w",
     "lint": "tslint 'src/*.ts*' && tslint 'test/*.ts*'",
     "lint-staged": "lint-staged",
-    "lint-fix": "prettier --trailing-comma all --single-quote --write \"{src,test}/**/*.ts*\"",
+    "lint-fix":
+      "prettier --trailing-comma all --single-quote --write \"{src,test}/**/*.ts*\"",
     "postcompile": "npm run bundle",
     "prepublish": "npm run compile",
-    "postinstall": "postinstall-build dist --script prepublish"
+    "postinstall": "postinstall-build lib --script prepublish"
   },
   "bundlesize": [
     {
@@ -40,10 +45,7 @@
       "prettier --trailing-comma all --single-quote --write",
       "git add"
     ],
-    "*.js*": [
-      "prettier --trailing-comma all --single-quote --write",
-      "git add"
-    ]
+    "*.js*": ["prettier --trailing-comma all --single-quote --write", "git add"]
   },
   "pre-commit": "lint-staged",
   "repository": {
@@ -61,9 +63,7 @@
   ],
   "author": "James Baxley <james@meteor.com>",
   "babel": {
-    "presets": [
-      "react-native"
-    ]
+    "presets": ["react-native"]
   },
   "jest": {
     "preset": "jest-react-native",
@@ -71,21 +71,13 @@
     "transform": {
       ".*": "./preprocessor.js"
     },
-    "moduleFileExtensions": [
-      "ts",
-      "tsx",
-      "js",
-      "json"
-    ],
+    "moduleFileExtensions": ["ts", "tsx", "js", "json"],
     "modulePathIgnorePatterns": [
       "<rootDir>/examples",
       "<rootDir>/test/flow.js",
       "<rootDir>/test/typescript.ts"
     ],
-    "projects": [
-      "<rootDir>",
-      "<rootDir>/examples/*"
-    ],
+    "projects": ["<rootDir>", "<rootDir>/examples/*"],
     "testRegex": "(/test/.*|\\.(test|spec))\\.(ts|tsx|js)$"
   },
   "license": "MIT",
